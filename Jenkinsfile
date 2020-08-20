@@ -16,8 +16,12 @@ node() {
         bat "docker tag sampleapp:v1 kaushikrahul08.azurecr.io/sampleapp:v1"
         bat "docker push kaushikrahul08.azurecr.io/sampleapp:v1"
          
-    }
+    } 
     
+    stage ('login to aks context login ') {
+        bat "az aks get-credentials --resource-group RG-AKS-US --name aksclrus"
+        bat "kubectl get pods"
+    }
     
 }
 
