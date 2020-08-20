@@ -18,4 +18,4 @@ spec:
       - name: sampleapp
         image: kaushikrahul08.azurecr.io/sampleapp:v1
         ports:
-        - containerPort: 8085
+        - containerPort: 8000
