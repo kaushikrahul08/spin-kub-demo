@@ -19,8 +19,11 @@ node() {
     } 
     
     stage ('login to aks context login ') {
-        bat "az aks get-credentials --resource-group RG-AKS-US --name aksclrus"
-        bat "kubectl get pods"
+        bat "az aks get-credentials --resource-group RG-AKS-US --name aksclrus
+    }
+    
+      stage ('deployment of pods ') {
+        bat "kubectl apply -f deployment.yml"
     }
     
 }
