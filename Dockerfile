@@ -1,9 +1,9 @@
 FROM golang
 
-ADD . /go/src/github.com/azure-devops/k8s-demo
+ADD . /go/src/github.com/kaushikrahul08/spin-kub-demo
 
-RUN go install github.com/azure-devops/k8s-demo
+RUN go install github.com/kaushikrahul08/spin-kub-demo
 
 ADD ./content /content
 
-ENTRYPOINT /go/bin/k8s-demo
+ENTRYPOINT /go/bin/spin-kub-demo
