@@ -4,13 +4,13 @@ pipeline {
     stages  {
         stage('checkout')  {
         //checkout scm
-        step {
+        steps {
             echo "Checking out"
         }
     }   
     stage ("Login to AZ") 
         {
-         step {
+         steps {
      withCredentials([azureServicePrincipal('AKS-SP-ID')])
             {
      bat "az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID"
