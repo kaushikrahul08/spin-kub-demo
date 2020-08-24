@@ -12,9 +12,9 @@ node() {
     }
     
      stage('docker build&push'){
-      bat "docker build -t sampleapp:v3 ."
-      bat "docker tag sampleapp:v3 kaushikrahul08.azurecr.io/sampleapp:v3"
-      bat "docker push kaushikrahul08.azurecr.io/sampleapp:v3"
+      bat "docker build -t sampleapp:v4 ."
+      bat "docker tag sampleapp:v4 kaushikrahul08.azurecr.io/sampleapp:v4"
+      bat "docker push kaushikrahul08.azurecr.io/sampleapp:v4"
          
     } 
     
