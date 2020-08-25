@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: sampleapp
-        image: kaushikrahul08.azurecr.io/sampleapp:v1
+        image: aksregus.azurecr.io/sampleapp:v2
         ports:
         - containerPort: 8000
