@@ -7,7 +7,6 @@ node() {
     stage('azlogin'){
      withCredentials([azureServicePrincipal('AKS-SP-ID')]) {
    bat "az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID"
-<<<<<<< HEAD
    bat "az acr login -n aksregus -u aksregus -p CEazBdcta05CfVV1G+GVc2lO3v5RsbaR"
                     }
     }
