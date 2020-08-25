@@ -20,9 +20,9 @@ node() {
     
     stage ('login to aks context login ') {
         //bat "cd C:/Users/rahulsharma "
-        bat "az aks get-credentials --resource-group RG-AKS-US --name aksclrus"
+        bat "az aks get-credentials --resource-group RG-AKS --name azkubeclr"
         bat "kubectl config get-contexts" 
-        bat "kubectl config use-context aksclrus"
+        bat "kubectl config use-context azkubeclr"
         
     }
     
