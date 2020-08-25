@@ -29,6 +29,7 @@ node() {
     
       stage ('deployment of pods ') {
         bat "kubectl apply -f deployment.yml"
+        bat "kubectl apply -f balancer-service.yaml"
     }
 
 }
