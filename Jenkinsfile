@@ -1,25 +1,33 @@
-pipeline {
-    agent any 
-    environment {
-            ACR_LOGINSERVER = Credentials ('ACR_LOGINSERVER')
-            ACR_USER = Credentials ('ACR_USER')
-            ACR_PASSWORD = Credentials ('ACR_PASSWORD')
+#!/usr/bin/env groovy
+node() {
+    stage('checkout'){
+        checkout scm
     }
-
-    stages  {
-        stage ("Configuring multi logins") {
-            steps {
-     withCredentials([azureServicePrincipal('AKS-SP-ID')])
-            {
-     bat "az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID"
-     bat "az acr login -n $ACR_LOGINSERVER -u $ACR_USER -p $ACR_PASSWORD"
-            }
-        }
-
+    
+    stage('azlogin'){
+     withCredentials([azureServicePrincipal('AKS-SP-ID')]) {
+   bat "az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID"
+   bat "az acr login -n aksregus -u aksregus -p CEazBdcta05CfVV1G+GVc2lO3v5RsbaR"
+                    }
     }
-}
-
-
-
-
+    
+     stage('docker build&push'){
+      bat "docker build -t sampleapp:v1 ."
+      bat "docker tag sampleapp:v1 aksregus.azurecr.io/sampleapp:v1"
+      bat "docker push aksregus.azurecr.io/sampleapp:v1"
+         
+    } 
+    
+    stage ('login to aks context login ') {
+        //bat "cd C:/Users/rahulsharma "
+        bat "az aks get-credentials --resource-group RG-AKS-US --name aksclrus"
+        bat "kubectl config get-contexts" 
+        bat "kubectl config use-context aksclrus"
+        
+    }
+    
+      stage ('deployment of pods ') {
+        bat "kubectl apply -f deployment.yml"
+    }
+    
 }

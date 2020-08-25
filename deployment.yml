@@ -5,7 +5,7 @@ metadata:
   labels:
     app: sampleapp
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: sampleapp
@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: sampleapp
-        image: kaushikrahul08.azurecr.io/sampleapp:v4
+        image: kaushikrahul08.azurecr.io/sampleapp:v1
         ports:
         - containerPort: 8000
