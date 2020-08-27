@@ -4,7 +4,7 @@ node() {
         checkout scm
     }
     
-    stage('azlogin'){
+    stage('azlogin') {
      withCredentials([azureServicePrincipal('AKS-SP-ID')]) {
    bat "az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID"
    bat "az acr login -n aksregus -u aksregus -p <Password>"
