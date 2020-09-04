@@ -7,14 +7,16 @@ node() {
     stage('azlogin') {
      withCredentials([azureServicePrincipal('AKS-SP-ID')]) {
    bat "az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID"
-   bat "az acr login -n aksregus -u aksregus -p <password>"
+   //bat "az acr login -n aksregus -u aksregus -p <password>"
                     }
     }
     
      stage('docker build&push'){
       bat "docker build -t sampleapp:v3 ."
-      bat "docker tag sampleapp:v3 aksregus.azurecr.io/sampleapp:v3"
-      bat "docker push aksregus.azurecr.io/sampleapp:v3"
+      //bat "docker tag sampleapp:v3 aksregus.azurecr.io/sampleapp:v3"
+      bat "docker tag sampleapp:v3 kaushikrahul08/sampleapp:v3"
+      //bat "docker push aksregus.azurecr.io/sampleapp:v3"
+      bat "docker push kaushikrahul08/sampleapp:v3"
          
     } 
     
@@ -28,8 +30,8 @@ node() {
     
     
       stage ('deployment of pods ') {
-        bat "kubectl apply -f deployment.yml"
-        bat "kubectl apply -f balancer-service.yaml"
+        //bat "kubectl apply -f deployment.yml"
+        //bat "kubectl apply -f balancer-service.yaml"
     }
 
 }
