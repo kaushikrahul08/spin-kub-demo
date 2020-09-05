@@ -18,8 +18,8 @@ node() {
     
      stage('docker build&push'){
       bat "docker build -t sampleapp:v3 ."
-      //bat "docker tag sampleapp:v3 aksregus.azurecr.io/sampleapp:v3"
-      bat "docker tag sampleapp:v3 kaushikrahul08/sampleapp:v3"
+      bat "docker tag sampleapp:v3 aksregus.azurecr.io/sampleapp:v3"
+      //bat "docker tag sampleapp:v3 kaushikrahul08/sampleapp:v3"
       //bat "docker push aksregus.azurecr.io/sampleapp:v3"
       bat "docker push kaushikrahul08/sampleapp:v3"
          
@@ -27,9 +27,9 @@ node() {
     
     stage ('login to aks context login ') {
         //bat "cd C:/Users/rahulsharma "
-        bat "az aks get-credentials --resource-group RG-AKS --name azkubeclr"
-        bat "kubectl config get-contexts" 
-        bat "kubectl config use-context azkubeclr"
+        //bat "az aks get-credentials --resource-group RG-AKS --name azkubeclr"
+        //bat "kubectl config get-contexts" 
+        //bat "kubectl config use-context azkubeclr"
         
     }
     
